@@ -989,7 +989,7 @@ def main():
 
     links_html = (
         '<div class="links-panel">'
-        '<div class="links-title">♥ CONNECTION PORTS</div>'
+        '<div class="links-title">♥ SOCIALS</div>'
 
         '<div class="links-grid">'
 
