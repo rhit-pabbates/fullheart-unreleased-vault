@@ -688,6 +688,75 @@ def inject_css():
         ::-webkit-scrollbar-track { background: var(--black); }
         ::-webkit-scrollbar-thumb { background: var(--blood); }
         ::-webkit-scrollbar-thumb:hover { background: var(--red); }
+        
+        /* ── CONTACT / LINKS TERMINAL ── */
+    .links-panel {
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--red);
+        background: linear-gradient(180deg, #090203, #120508);
+        padding: 14px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .links-panel::before {
+        content: "NETWORK_OUTPUT.sys";
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        font-family: var(--font-px);
+        font-size: 6px;
+        color: rgba(255,53,94,.18);
+        letter-spacing: 2px;
+    }
+    
+    .links-title {
+        font-family: var(--font-px);
+        font-size: 8px;
+        color: var(--red);
+        letter-spacing: 3px;
+        margin-bottom: 12px;
+        text-shadow: var(--glow-r);
+    }
+    
+    .links-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .social-link {
+        text-decoration: none !important;
+        color: var(--red-pale) !important;
+        border: 1px solid var(--blood);
+        background: rgba(255,53,94,.04);
+        padding: 8px 12px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 2px;
+        transition: all .12s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow:
+            inset 0 0 8px rgba(255,53,94,.03),
+            0 0 8px rgba(255,53,94,.06);
+    }
+    
+    .social-link:hover {
+        border-color: var(--red);
+        background: rgba(255,53,94,.10);
+        transform: translate(-1px,-1px);
+        box-shadow:
+            0 0 18px rgba(255,53,94,.22),
+            inset 0 0 12px rgba(255,53,94,.08);
+    }
+    
+    .social-icon {
+        color: var(--red);
+        text-shadow: 0 0 8px rgba(255,53,94,.6);
+    }
         </style>
         """,
         unsafe_allow_html=True,
@@ -918,6 +987,31 @@ def main():
         for display_index, (row_index, row) in enumerate(recent_tracks.iterrows(), start=1):
             render_track_card(row, display_index)
 
+    links_html = (
+        '<div class="links-panel">'
+        '<div class="links-title">♥ CONNECTION PORTS</div>'
+
+        '<div class="links-grid">'
+
+        '<a class="social-link" href="https://www.youtube.com/@prodfullheart/featured" target="_blank">'
+        '<span class="social-icon">▶</span>'
+        'YT'
+        '</a>'
+
+        '<a class="social-link" href="https://www.instagram.com/prodfullheart/" target="_blank">'
+        '<span class="social-icon">◎</span>'
+        'IG'
+        '</a>'
+
+        '<a class="social-link" href="https://soundcloud.com/fullheartarchive" target="_blank">'
+        '<span class="social-icon">♫</span>'
+        'SOUNDCLOUD'
+        '</a>'
+
+        '</div>'
+        '</div>'
+    )
+    st.markdown(links_html, unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
 
